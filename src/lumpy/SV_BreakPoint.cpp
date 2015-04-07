@@ -31,6 +31,7 @@ const int SV_BreakPoint::DELETION;
 const int SV_BreakPoint::DUPLICATION;
 const int SV_BreakPoint::INVERSION;
 const int SV_BreakPoint::TRANSLOCATION;
+const int SV_BreakPoint::INSERTION;
 
 
 //{{{ SV_BreakPoint:: SV_BreakPoint(SV_Evidence *e)
@@ -937,6 +938,8 @@ print_bedpe(int id, int print_prob)
         cout << "DUPLICATION";
     else if (type == INVERSION)
         cout << "INVERSION";
+    else if (type == INSERTION)
+        cout << "INSERTION";
     else
         cout <<  "???";
 

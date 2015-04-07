@@ -196,10 +196,18 @@ get_bp()
     new_bp->interval_l.p = NULL;
 
     if (new_bp->interval_l.i.strand == '+') // // + ?
-        if (new_bp->interval_r.i.strand == '+') // + +
+        if (new_bp->interval_r.i.strand == '-') { // + -
+            if ( (read_r.end - read_l.start) > reader->mean) // span is larger than the mean
+	      {
+	        new_bp->type = SV_BreakPoint::DELETION;
+		// cout << reader->mean << endl;
+		// cout << read_r.end - read_l.start << endl;
+	      }
+            else // span is smaller than the mean
+                new_bp->type = SV_BreakPoint::INSERTION;
+	}
+        else // + +
             new_bp->type = SV_BreakPoint::INVERSION;
-        else // + -
-            new_bp->type = SV_BreakPoint::DELETION;
     else // - ?
         if (new_bp->interval_r.i.strand == '+') // - +
             new_bp->type = SV_BreakPoint::DUPLICATION;

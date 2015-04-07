@@ -56,6 +56,7 @@ class SV_BreakPoint
 		static const int DUPLICATION = 2;
 		static const int INVERSION = 3;
 		static const int TRANSLOCATION = 4;
+		static const int INSERTION = 5;
 		static double p_trim_threshold;
 		static double p_merge_threshold;
 		static bool sort_bp_by_interval_l_start(SV_BreakPoint *i,
